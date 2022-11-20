@@ -11,9 +11,7 @@ namespace webdemo.Areas.Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class OrderPro
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

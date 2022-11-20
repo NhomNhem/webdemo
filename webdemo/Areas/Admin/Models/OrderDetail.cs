@@ -11,9 +11,7 @@ namespace webdemo.Areas.Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class OrderDetail
     {
         public int ID { get; set; }
@@ -21,7 +19,8 @@ namespace webdemo.Areas.Admin.Models
         public Nullable<int> IDOrder { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<double> UnitPrice { get; set; }
-    
+        
+
         public virtual OrderPro OrderPro { get; set; }
         public virtual Product Product { get; set; }
     }

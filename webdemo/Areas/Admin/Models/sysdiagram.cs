@@ -14,10 +14,10 @@ namespace webdemo.Areas.Admin.Models
     
     public partial class sysdiagram
     {
-        public virtual string name { get; set; }
-        public virtual int principal_id { get; set; }
-        public virtual int diagram_id { get; set; }
-        public virtual Nullable<int> version { get; set; }
-        public virtual byte[] definition { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

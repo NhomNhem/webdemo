@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Web;
@@ -12,12 +13,6 @@ namespace webdemo.Areas.Admin.Controllers
     {
         // GET: Admin/Categories
         AdminC db = new AdminC();
-        public ActionResult Index(string _name)
-        {   
-            if (_name == null)
-                return View(db.Categories.ToList());
-            return View(db.Categories.Where(s=> s.NameCate.Contains(_name)).ToList());
-        }
         public ActionResult Create()
         {
             return View();
@@ -28,29 +23,35 @@ namespace webdemo.Areas.Admin.Controllers
             try
             {
                 db.Categories.Add(cate);
-                db.SaveChanges();
+                db.SaveChangesAsync();
                 return RedirectToAction("Index");
-            }catch
+            }
+            catch
             {
-                return Content("Error Create New");
-            }    
+                return Content("err create new");
+            }
         }
-
-        public ActionResult Details(int id) { 
-            return View(db.Categories.Where(s=>s.Id == id).FirstOrDefault());
+        public ActionResult Details(int id)
+        {
+            return View(db.Categories.Where(s => s.Id == id).FirstOrDefault());
         }
 
         public ActionResult Edit(int id)
         {
             return View(db.Categories.Where(s => s.Id == id).FirstOrDefault());
         }
+
         [HttpPost]
         public ActionResult Edit(int id, Category cate)
         {
+
+
             db.Entry(cate).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
+
         }
+
         public ActionResult Delete(int id)
         {
             return View(db.Categories.Where(s => s.Id == id).FirstOrDefault());
@@ -63,12 +64,30 @@ namespace webdemo.Areas.Admin.Controllers
                 cate = db.Categories.Where(s => s.Id == id).FirstOrDefault();
                 db.Categories.Remove(cate);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("index");
             }
             catch
             {
-                return Content("This data is using in other table, Eror Delete!");
+                return Content("this data is using in other table, error delete");
             }
+        }
+        // Action PartialViewResult
+
+        public ActionResult Index(string _name)
+        {
+            if (_name == null)
+            {
+                return View(db.Categories.ToList());
+            }
+            else
+                return View(db.Categories.Where(s => s.NameCate.Contains(_name)).ToList());
+        }
+        // Action PartialViewResult
+        [ChildActionOnly]
+        public PartialViewResult CategoryPartial()
+        {
+            var cateList = db.Categories.ToList();
+            return PartialView(cateList);
         }
     }
 }

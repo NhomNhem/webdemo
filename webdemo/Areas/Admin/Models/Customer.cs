@@ -11,9 +11,7 @@ namespace webdemo.Areas.Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,12 +19,12 @@ namespace webdemo.Areas.Admin.Models
         {
             this.OrderProes = new HashSet<OrderPro>();
         }
-    
+
         public int IDCus { get; set; }
         public string NameCus { get; set; }
         public string PhoneCus { get; set; }
         public string EmailCus { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderPro> OrderProes { get; set; }
     }

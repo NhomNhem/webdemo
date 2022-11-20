@@ -18,7 +18,7 @@
 
     <!-- Custom styles for this template-->
     <link href="~/Areas/Admin/Contents/css/sb-admin-2.min.css" rel="stylesheet">
-
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 
 <body id="page-top">
@@ -66,8 +66,10 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        @Html.ActionLink("Tạo Sản Phẩm", "Create", "Categories", new { area = "Admin" }, new { @class = "collapse-item" })
-                        @Html.ActionLink("Tạo Sản Phẩm", "Create", "Products", new { area = "Admin" }, new { @class = "collapse-item" })
+                        @Html.ActionLink("Loại Sản Phẩm", "Index", "Categories", new { area = "Admin" }, new { @class = "collapse-item" })
+                        @Html.ActionLink("Sản Phẩm", "Index", "Product", new { area = "Admin" }, new { @class = "collapse-item" })
+                        @Html.ActionLink("Khách Hàng", "Index", "Customer", new { area = "Admin" }, new { @class = "collapse-item" })
+                        @Html.ActionLink("Đơn Hàng", "Index", "OrderPros", new { area = "Admin" }, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
@@ -372,6 +374,9 @@
                 <div class="container-fluid">
                     @RenderBody()
                 </div>
+                @Scripts.Render("~/bundles/jquery")
+                
+                @RenderSection("scripts", required: false)
                 <!-- Begin Page Content -->
                 <!-- /.container-fluid -->
 
@@ -433,7 +438,7 @@
     <!-- Page level custom scripts -->
     <script src="~/Areas/Admin/Contents/js/demo/chart-area-demo.js"></script>
     <script src="~/Areas/Admin/Contents/js/demo/chart-pie-demo.js"></script>
-
+    <script src="~/Areas/Admin/Contents/Js_/upload.js"></script>
 </body>
 
 </html>

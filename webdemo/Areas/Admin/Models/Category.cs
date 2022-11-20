@@ -11,8 +11,6 @@ namespace webdemo.Areas.Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Category
     {
@@ -28,7 +26,5 @@ namespace webdemo.Areas.Admin.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
-        [NotMapped]
-        public List<Category> ListCate { get; set; }
     }
 }
